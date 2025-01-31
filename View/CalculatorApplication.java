@@ -149,7 +149,13 @@ public class CalculatorApplication extends Application {
             @Override
             public void handle(ActionEvent event) {
                 Calculator calculator = new Calculator(displayInfo);
-                displayInfo = calculator.getResult() + "";
+                double result = calculator.getResult();
+
+                if((int)result == result)
+                    displayInfo = (int)result + "";
+                else
+                    displayInfo = result + "";
+
                 fieldForDisplaying.setText(displayInfo);
             }
             
