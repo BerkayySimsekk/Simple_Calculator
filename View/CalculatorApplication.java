@@ -90,7 +90,7 @@ public class CalculatorApplication extends Application {
                     fieldForDisplaying.setText(displayInfo);
                 }
                 
-                if(displayInfo.charAt(displayInfo.length() - 1) == '+' || displayInfo.charAt(displayInfo.length() - 1) == '-' || displayInfo.charAt(displayInfo.length() - 1) == '÷' || displayInfo.charAt(displayInfo.length() - 1) == '×' || displayInfo.charAt(displayInfo.length() - 1) == '√') {
+                if(displayInfo.charAt(displayInfo.length() - 1) == '+' || displayInfo.charAt(displayInfo.length() - 1) == '-' || displayInfo.charAt(displayInfo.length() - 1) == '÷' || displayInfo.charAt(displayInfo.length() - 1) == '×') {
                     displayInfo += "(";
                     fieldForDisplaying.setText(displayInfo);
                 }
@@ -102,7 +102,7 @@ public class CalculatorApplication extends Application {
 
             @Override
             public void handle(ActionEvent event) {
-                if(LeftParanthesisCounter() != RightParanthesisCounter() && displayInfo.length() != 0 && (displayInfo.charAt(displayInfo.length() - 1) == '0' || displayInfo.charAt(displayInfo.length() - 1) == '1' || displayInfo.charAt(displayInfo.length() - 1) == '2' || displayInfo.charAt(displayInfo.length() - 1) == '3' || displayInfo.charAt(displayInfo.length() - 1) == '4' || displayInfo.charAt(displayInfo.length() - 1) == '5' || displayInfo.charAt(displayInfo.length() - 1) == '6' || displayInfo.charAt(displayInfo.length() - 1) == '7' || displayInfo.charAt(displayInfo.length() - 1) == '8' || displayInfo.charAt(displayInfo.length() - 1) == '9')) {
+                if(LeftParanthesisCounter() != RightParanthesisCounter() && displayInfo.length() != 0 && (displayInfo.charAt(displayInfo.length() - 1) == ')' || displayInfo.charAt(displayInfo.length() - 1) == '0' || displayInfo.charAt(displayInfo.length() - 1) == '1' || displayInfo.charAt(displayInfo.length() - 1) == '2' || displayInfo.charAt(displayInfo.length() - 1) == '3' || displayInfo.charAt(displayInfo.length() - 1) == '4' || displayInfo.charAt(displayInfo.length() - 1) == '5' || displayInfo.charAt(displayInfo.length() - 1) == '6' || displayInfo.charAt(displayInfo.length() - 1) == '7' || displayInfo.charAt(displayInfo.length() - 1) == '8' || displayInfo.charAt(displayInfo.length() - 1) == '9')) {
                     displayInfo += ")";
                     fieldForDisplaying.setText(displayInfo);
                 }
@@ -148,15 +148,17 @@ public class CalculatorApplication extends Application {
 
             @Override
             public void handle(ActionEvent event) {
-                Calculator calculator = new Calculator(displayInfo);
-                double result = calculator.getResult();
+                if(RightParanthesisCounter() == LeftParanthesisCounter()) {
+                    Calculator calculator = new Calculator(displayInfo);
+                    double result = calculator.getResult();
 
-                if((int)result == result)
-                    displayInfo = (int)result + "";
-                else
-                    displayInfo = result + "";
+                    if((int)result == result)
+                        displayInfo = (int)result + "";
+                    else
+                        displayInfo = result + "";
 
-                fieldForDisplaying.setText(displayInfo);
+                    fieldForDisplaying.setText(displayInfo);
+                }
             }
             
         });
