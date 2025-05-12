@@ -1,6 +1,6 @@
 # Simple Calculator 
 
-A personal project to practice the knowledge I gained from CS 102 using JavaFX. This calculator can perform addition, subtraction, multiplication and division. Parantheses can be used to seperate the expressions. The input from the user is taken as infix expression which is turned into postfix expression to evaluate the result by using Stack objects.
+A personal project to practice the knowledge I gained from CS 102 using JavaFX. This calculator can perform addition, subtraction, multiplication and division. Parantheses can be used to separate the expressions. The input from the user is taken as infix expression which is turned into postfix expression to evaluate the result by using a stack object.
 
 ## How to Run the Program
 
